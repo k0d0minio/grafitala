@@ -66,9 +66,9 @@ export default function Footer() {
               >
                 <MapPin className="h-5 w-5 text-primary" />
                 <span className="text-muted-foreground">
-                  123 Business Street
+                  Rua Natael Rianço
                   <br />
-                  City, State 12345
+                  2785-543 S. Domingos de Rana
                 </span>
               </motion.div>
               <motion.div
@@ -76,7 +76,7 @@ export default function Footer() {
                 className="flex items-center space-x-3"
               >
                 <Phone className="h-5 w-5 text-primary" />
-                <span className="text-muted-foreground">(555) 123-4567</span>
+                <span className="text-muted-foreground">+351 214 441 161</span>
               </motion.div>
               <motion.div
                 whileHover={{ x: 5 }}
@@ -84,7 +84,7 @@ export default function Footer() {
               >
                 <Mail className="h-5 w-5 text-primary" />
                 <span className="text-muted-foreground">
-                  info@grafitala.com
+                  grafitala@grafitala.com
                 </span>
               </motion.div>
             </div>
@@ -132,7 +132,7 @@ export default function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-muted-foreground text-sm">
-              © 2024 Grafitala. All rights reserved.
+              © {new Date().getFullYear()} Grafitala. All rights reserved.
             </p>
             <div className="flex space-x-6 text-sm text-muted-foreground">
               <motion.a
