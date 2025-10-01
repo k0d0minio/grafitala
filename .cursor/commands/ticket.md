@@ -37,7 +37,6 @@ Examples:
    - [ ] Identify testing requirements and existing test coverage
 
 3. **Create Detailed Implementation Plan**
-   - [ ] Create `tmp/ticket-plan-{ticket-id}.md`
    - [ ] **Current State Analysis**: Document existing codebase state
    - [ ] **Requirements Breakdown**: Detailed analysis of ticket requirements
    - [ ] **Technical Approach**: Architecture decisions and rationale
