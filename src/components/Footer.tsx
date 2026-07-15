@@ -1,157 +1,111 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { LogoMark } from "@/components/Logo";
+import { company, nav, products } from "@/lib/content";
 
 export default function Footer() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut" as const
-      }
-    }
-  };
-
   return (
-    <footer className="bg-muted/50 border-t border-border">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-        >
-          {/* Company Info */}
-          <motion.div variants={itemVariants} className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">
-                  G
-                </span>
-              </div>
-              <span className="text-xl font-bold text-foreground">
-                Grafitala
+    <footer className="border-t border-border bg-secondary/40">
+      <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
+          {/* Brand */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-2.5">
+              <LogoMark />
+              <span className="font-display text-xl font-bold tracking-tight">
+                {company.name}
               </span>
             </div>
-            <p className="text-muted-foreground leading-relaxed">
-              Your trusted partner for professional printing and graphic design
-              services. We deliver quality and innovation in every project.
+            <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
+              A family print house making folding-carton packaging and labels
+              for the food industry — designed, printed, cut and glued in-house
+              in {company.location}.
             </p>
-          </motion.div>
-
-          {/* Contact Information */}
-          <motion.div variants={itemVariants} className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">
-              Contact Info
-            </h3>
-            <div className="space-y-3">
-              <motion.div
-                whileHover={{ x: 5 }}
-                className="flex items-center space-x-3"
-              >
-                <MapPin className="h-5 w-5 text-primary" />
-                <span className="text-muted-foreground">
-                  Rua Natael Rianço
-                  <br />
-                  2785-543 S. Domingos de Rana
-                </span>
-              </motion.div>
-              <motion.div
-                whileHover={{ x: 5 }}
-                className="flex items-center space-x-3"
-              >
-                <Phone className="h-5 w-5 text-primary" />
-                <span className="text-muted-foreground">+351 214 441 161</span>
-              </motion.div>
-              <motion.div
-                whileHover={{ x: 5 }}
-                className="flex items-center space-x-3"
-              >
-                <Mail className="h-5 w-5 text-primary" />
-                <span className="text-muted-foreground">
-                  grafitala@grafitala.com
-                </span>
-              </motion.div>
-            </div>
-          </motion.div>
-
-          {/* Business Hours */}
-          <motion.div variants={itemVariants} className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">
-              Business Hours
-            </h3>
-            <div className="space-y-2">
-              <motion.div
-                whileHover={{ x: 5 }}
-                className="flex items-center space-x-3"
-              >
-                <Clock className="h-5 w-5 text-primary" />
-                <div className="text-muted-foreground">
-                  <div>Mon - Fri: 8:00 AM - 6:00 PM</div>
-                  <div>Sat: 9:00 AM - 4:00 PM</div>
-                  <div>Sun: Closed</div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-
-          {/* Services */}
-          <motion.div variants={itemVariants} className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">
-              Our Services
-            </h3>
-            <ul className="space-y-2 text-muted-foreground">
-              <motion.li whileHover={{ x: 5 }}>Digital Printing</motion.li>
-              <motion.li whileHover={{ x: 5 }}>Graphic Design</motion.li>
-              <motion.li whileHover={{ x: 5 }}>Large Format Printing</motion.li>
-              <motion.li whileHover={{ x: 5 }}>Business Cards</motion.li>
-              <motion.li whileHover={{ x: 5 }}>Banners & Signs</motion.li>
-            </ul>
-          </motion.div>
-        </motion.div>
-
-        {/* Bottom Bar */}
-        <motion.div
-          variants={itemVariants}
-          className="mt-12 pt-8 border-t border-border"
-        >
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-muted-foreground text-sm">
-              © {new Date().getFullYear()} Grafitala. All rights reserved.
+            <p className="text-xs text-muted-foreground">
+              We handle the packaging. You handle the packing.
             </p>
-            <div className="flex space-x-6 text-sm text-muted-foreground">
-              <motion.a
-                href="#privacy"
-                whileHover={{ scale: 1.05 }}
-                className="hover:text-primary transition-colors"
-              >
-                Privacy Policy
-              </motion.a>
-              <motion.a
-                href="#terms"
-                whileHover={{ scale: 1.05 }}
-                className="hover:text-primary transition-colors"
-              >
-                Terms of Service
-              </motion.a>
-            </div>
           </div>
-        </motion.div>
+
+          {/* Explore */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-foreground">Explore</h3>
+            <ul className="space-y-2.5 text-sm">
+              {nav.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    className="text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* What we print */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-foreground">
+              What we print
+            </h3>
+            <ul className="space-y-2.5 text-sm text-muted-foreground">
+              {products.map((p) => (
+                <li key={p.key}>{p.title}</li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-foreground">
+              Get in touch
+            </h3>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li className="flex gap-3">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <span>
+                  {company.address.line1}
+                  <br />
+                  {company.address.line2}
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <a
+                  href={company.phoneHref}
+                  className="transition-colors hover:text-primary"
+                >
+                  {company.phone}
+                </a>
+              </li>
+              <li className="flex gap-3">
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <a
+                  href={`mailto:${company.email}`}
+                  className="break-all transition-colors hover:text-primary"
+                >
+                  {company.email}
+                </a>
+              </li>
+              <li className="flex gap-3">
+                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <span>
+                  {company.hours[0].days}
+                  <br />
+                  {company.hours[0].time}
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-sm text-muted-foreground sm:flex-row">
+          <p>
+            © {new Date().getFullYear()} {company.name}. All rights reserved.
+          </p>
+          <p>Printing packaging in {company.location} since {company.foundedYear}.</p>
+        </div>
       </div>
     </footer>
   );
