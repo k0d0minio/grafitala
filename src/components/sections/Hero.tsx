@@ -5,7 +5,8 @@ import { ArrowRight, PackageCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import CartonArt from "@/components/CartonArt";
-import { company, stats } from "@/lib/content";
+import { company } from "@/lib/content";
+import { useI18n } from "@/lib/i18n/context";
 
 const container = {
   hidden: {},
@@ -21,6 +22,8 @@ const item = {
 };
 
 export default function Hero() {
+  const { t } = useI18n();
+  const hero = t.hero;
   return (
     <section
       id="top"
@@ -34,7 +37,7 @@ export default function Hero() {
           <motion.div variants={item}>
             <Badge>
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              {company.location} · Since {company.foundedYear}
+              {company.location} · {hero.since} {company.foundedYear}
             </Badge>
           </motion.div>
 
@@ -42,19 +45,17 @@ export default function Hero() {
             variants={item}
             className="mt-6 font-display text-4xl font-semibold leading-[1.06] tracking-tight text-balance sm:text-5xl lg:text-6xl"
           >
-            Packaging that
-            <br className="hidden sm:block" /> sells what&apos;s{" "}
-            <span className="text-primary">inside</span>.
+            {hero.titleLead}
+            <br className="hidden sm:block" /> {hero.titleMid}{" "}
+            <span className="text-primary">{hero.titleHighlight}</span>
+            {hero.titleTrail}
           </motion.h1>
 
           <motion.p
             variants={item}
             className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground text-pretty"
           >
-            For over 30 years, Grafitala has printed the boxes the food industry
-            relies on — jelly, ready meals, puddings, meat and labels. We design,
-            print, cut and glue every carton in-house. You get finished packaging,
-            ready to fill.
+            {hero.description}
           </motion.p>
 
           <motion.div
@@ -63,7 +64,7 @@ export default function Hero() {
           >
             <Button asChild size="lg" className="group h-12 px-6 text-base">
               <a href="#contact">
-                Request a quote
+                {hero.requestQuote}
                 <ArrowRight className="transition-transform group-hover:translate-x-0.5" />
               </a>
             </Button>
@@ -73,7 +74,7 @@ export default function Hero() {
               size="lg"
               className="h-12 px-6 text-base"
             >
-              <a href="#products">See what we print</a>
+              <a href="#products">{hero.seeWhatWePrint}</a>
             </Button>
           </motion.div>
 
@@ -82,7 +83,7 @@ export default function Hero() {
             className="mt-5 inline-flex items-center gap-2 text-sm text-muted-foreground"
           >
             <PackageCheck className="h-4 w-4 text-primary" />
-            We do the packaging — not the packing.
+            {hero.note}
           </motion.p>
         </motion.div>
 
@@ -104,7 +105,7 @@ export default function Hero() {
         className="container mx-auto mt-14 px-4 sm:px-6 lg:mt-20 lg:px-8"
       >
         <dl className="grid grid-cols-2 divide-border overflow-hidden rounded-xl border border-border bg-card sm:grid-cols-4 sm:divide-x">
-          {stats.map((s) => (
+          {hero.stats.map((s) => (
             <div key={s.label} className="px-6 py-6 text-center sm:text-left">
               <dt className="sr-only">{s.label}</dt>
               <dd>

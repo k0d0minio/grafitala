@@ -10,7 +10,8 @@ import {
   type LucideIcon
 } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
-import { products } from "@/lib/content";
+import { productKeys } from "@/lib/content";
+import { useI18n } from "@/lib/i18n/context";
 
 const icons: Record<string, LucideIcon> = {
   jelly: IceCreamCone,
@@ -21,22 +22,25 @@ const icons: Record<string, LucideIcon> = {
 };
 
 export default function Products() {
+  const { t } = useI18n();
+  const products = t.products;
   return (
     <section id="products" className="relative py-20 lg:py-28">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          eyebrow="What we print"
-          title="Cartons and labels, built for food"
-          description="Grafitala specialises in printed packaging for the food industry — the boxes that protect your product and do the selling on a crowded shelf."
+          eyebrow={products.eyebrow}
+          title={products.title}
+          description={products.description}
         />
 
         <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
-          {products.map((p, i) => {
-            const Icon = icons[p.key];
-            const featured = p.key === "jelly";
+          {productKeys.map((key, i) => {
+            const p = products.items[key];
+            const Icon = icons[key];
+            const featured = key === "jelly";
             return (
               <motion.article
-                key={p.key}
+                key={key}
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
@@ -55,7 +59,7 @@ export default function Products() {
                   </span>
                   {featured && (
                     <span className="rounded-full border border-border px-3 py-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                      Our roots
+                      {products.ourRoots}
                     </span>
                   )}
                 </div>
@@ -85,17 +89,16 @@ export default function Products() {
             className="flex flex-col justify-center gap-2 bg-secondary/50 p-6 sm:p-7"
           >
             <p className="font-display text-lg font-semibold">
-              Something else in mind?
+              {products.closing.title}
             </p>
             <p className="text-sm text-muted-foreground">
-              If it&apos;s a printed food carton or label, we can most likely make
-              it. Tell us about your product.
+              {products.closing.description}
             </p>
             <a
               href="#contact"
               className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
             >
-              Start a conversation →
+              {products.closing.cta}
             </a>
           </motion.div>
         </div>

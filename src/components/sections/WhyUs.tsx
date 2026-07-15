@@ -9,14 +9,9 @@ import {
   Scissors
 } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
-import { reasons, techniques } from "@/lib/content";
+import { useI18n } from "@/lib/i18n/context";
 
-const equipment = [
-  { Icon: Printer, value: "2", label: "Industrial printers" },
-  { Icon: Factory, value: "2", label: "Production lines" },
-  { Icon: Palette, value: "1", label: "In-house designer" },
-  { Icon: Scissors, value: "1", label: "Cutting & gluing line" }
-];
+const equipmentIcons = [Printer, Factory, Palette, Scissors];
 
 const container = {
   hidden: {},
@@ -32,6 +27,8 @@ const item = {
 };
 
 export default function WhyUs() {
+  const { t } = useI18n();
+  const why = t.why;
   return (
     <section id="why" className="relative py-20 lg:py-28">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -40,9 +37,9 @@ export default function WhyUs() {
           <div>
             <SectionHeading
               align="left"
-              eyebrow="Why Grafitala"
-              title="A print house that started with lenticular, and never stopped refining"
-              description="Two generations of the same family have run these presses for more than 30 years. We began in lenticular printing and grew into a dedicated packaging house for the food industry — the same hands-on standards, at real scale."
+              eyebrow={why.eyebrow}
+              title={why.title}
+              description={why.description}
             />
 
             <motion.ul
@@ -52,7 +49,7 @@ export default function WhyUs() {
               viewport={{ once: true, margin: "-60px" }}
               className="mt-10 space-y-6"
             >
-              {reasons.map((r) => (
+              {why.reasons.map((r) => (
                 <motion.li key={r.title} variants={item} className="flex gap-4">
                   <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-primary/25 bg-primary/8 text-primary">
                     <Check className="h-3.5 w-3.5" strokeWidth={2.5} />
@@ -79,7 +76,9 @@ export default function WhyUs() {
               viewport={{ once: true, margin: "-60px" }}
               className="grid grid-cols-2 gap-4"
             >
-              {equipment.map(({ Icon, value, label }) => (
+              {why.equipment.map(({ value, label }, i) => {
+                const Icon = equipmentIcons[i];
+                return (
                 <motion.div
                   key={label}
                   variants={item}
@@ -91,7 +90,8 @@ export default function WhyUs() {
                   </p>
                   <p className="text-sm text-muted-foreground">{label}</p>
                 </motion.div>
-              ))}
+                );
+              })}
             </motion.div>
 
             <motion.div
@@ -102,14 +102,14 @@ export default function WhyUs() {
               className="rounded-xl border border-border bg-card p-6"
             >
               <h3 className="font-display text-lg font-semibold">
-                Techniques we run
+                {why.techniquesTitle}
               </h3>
               <dl className="mt-5 grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2">
-                {techniques.map((t) => (
-                  <div key={t.title} className="border-l-2 border-primary/30 pl-4">
-                    <dt className="font-medium">{t.title}</dt>
+                {why.techniques.map((tech) => (
+                  <div key={tech.title} className="border-l-2 border-primary/30 pl-4">
+                    <dt className="font-medium">{tech.title}</dt>
                     <dd className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                      {t.description}
+                      {tech.description}
                     </dd>
                   </div>
                 ))}
