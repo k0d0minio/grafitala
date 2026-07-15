@@ -28,9 +28,9 @@ export default function Hero() {
     >
       {/* Ambient CMYK mesh */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="mesh-blob absolute -left-24 top-10 h-80 w-80 rounded-full bg-cyan/25" />
-        <div className="mesh-blob absolute right-0 top-0 h-96 w-96 rounded-full bg-magenta/20" />
-        <div className="mesh-blob absolute -bottom-20 left-1/3 h-80 w-80 rounded-full bg-primary/20" />
+        <div className="mesh-blob absolute -left-24 top-10 h-80 w-80 rounded-full bg-primary/18" />
+        <div className="mesh-blob absolute right-0 top-0 h-96 w-96 rounded-full bg-cyan/14" />
+        <div className="mesh-blob absolute -bottom-20 left-1/3 h-80 w-80 rounded-full bg-magenta/10" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/40 to-background" />
       </div>
 

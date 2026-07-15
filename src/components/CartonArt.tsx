@@ -46,16 +46,16 @@ export default function CartonArt() {
         >
           <defs>
             <linearGradient id="topFace" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stopColor="oklch(0.98 0.02 80)" />
-              <stop offset="1" stopColor="oklch(0.93 0.03 75)" />
+              <stop offset="0" stopColor="oklch(0.97 0.008 150)" />
+              <stop offset="1" stopColor="oklch(0.93 0.012 150)" />
             </linearGradient>
             <linearGradient id="leftFace" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="oklch(0.7 0.16 42)" />
-              <stop offset="1" stopColor="oklch(0.58 0.18 38)" />
+              <stop offset="0" stopColor="oklch(0.6 0.135 150)" />
+              <stop offset="1" stopColor="oklch(0.5 0.14 149)" />
             </linearGradient>
             <linearGradient id="rightFace" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="oklch(0.55 0.17 36)" />
-              <stop offset="1" stopColor="oklch(0.44 0.16 34)" />
+              <stop offset="0" stopColor="oklch(0.46 0.125 149)" />
+              <stop offset="1" stopColor="oklch(0.38 0.115 148)" />
             </linearGradient>
           </defs>
 
@@ -70,7 +70,7 @@ export default function CartonArt() {
           <path
             d="M160 150 L40 90 L160 30 L280 90 Z"
             fill="url(#topFace)"
-            stroke="oklch(0.88 0.03 75)"
+            stroke="oklch(0.88 0.012 150)"
             strokeWidth="1"
           />
 
@@ -83,15 +83,15 @@ export default function CartonArt() {
               height="96"
               rx="6"
               transform="skewY(26.5)"
-              fill="oklch(0.99 0.01 83)"
+              fill="oklch(0.99 0.006 150)"
             />
           </g>
           {/* Label content (drawn upright, then skewed to sit on the face) */}
           <g transform="translate(160 150)">
             <g transform="matrix(1,0.5,0,1,-98,0)">
-              <rect x="0" y="14" width="70" height="14" rx="3" fill="oklch(0.62 0.19 40)" />
-              <rect x="0" y="36" width="52" height="7" rx="3" fill="oklch(0.8 0.05 70)" />
-              <rect x="0" y="48" width="60" height="7" rx="3" fill="oklch(0.8 0.05 70)" />
+              <rect x="0" y="14" width="70" height="14" rx="3" fill="var(--primary)" />
+              <rect x="0" y="36" width="52" height="7" rx="3" fill="oklch(0.82 0.01 150)" />
+              <rect x="0" y="48" width="60" height="7" rx="3" fill="oklch(0.82 0.01 150)" />
               <circle cx="52" cy="80" r="14" fill="oklch(0.72 0.14 220)" />
               <circle cx="40" cy="80" r="14" fill="oklch(0.62 0.25 350)" opacity="0.85" />
             </g>
@@ -100,7 +100,7 @@ export default function CartonArt() {
           {/* Highlight seam */}
           <path
             d="M160 150 L160 290"
-            stroke="oklch(0.3 0.02 40)"
+            stroke="oklch(0.3 0.02 150)"
             strokeOpacity="0.35"
             strokeWidth="1.5"
           />

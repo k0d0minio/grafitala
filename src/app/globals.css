@@ -44,72 +44,72 @@
 :root {
   --radius: 0.75rem;
 
-  /* Warm paper base */
-  --background: oklch(0.986 0.006 83);
-  --foreground: oklch(0.205 0.014 55);
+  /* Graphite-tinted paper base — a step darker, cooler, calmer */
+  --background: oklch(0.955 0.004 150);
+  --foreground: oklch(0.2 0.012 150);
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.205 0.014 55);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.205 0.014 55);
+  --card: oklch(0.985 0.003 150);
+  --card-foreground: oklch(0.2 0.012 150);
+  --popover: oklch(0.985 0.003 150);
+  --popover-foreground: oklch(0.2 0.012 150);
 
-  /* Terracotta / warm print-orange */
-  --primary: oklch(0.63 0.185 40);
-  --primary-foreground: oklch(0.99 0.01 83);
+  /* Grafitala green — logo hue, toned down for use at scale */
+  --primary: oklch(0.6 0.155 148);
+  --primary-foreground: oklch(0.985 0.01 150);
 
-  --secondary: oklch(0.955 0.012 80);
-  --secondary-foreground: oklch(0.28 0.02 50);
+  --secondary: oklch(0.925 0.006 150);
+  --secondary-foreground: oklch(0.28 0.015 150);
 
-  --muted: oklch(0.955 0.012 80);
-  --muted-foreground: oklch(0.52 0.02 55);
+  --muted: oklch(0.925 0.006 150);
+  --muted-foreground: oklch(0.48 0.015 150);
 
-  --accent: oklch(0.95 0.03 60);
-  --accent-foreground: oklch(0.3 0.05 45);
+  --accent: oklch(0.92 0.03 150);
+  --accent-foreground: oklch(0.3 0.05 150);
 
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.905 0.012 75);
-  --input: oklch(0.9 0.012 75);
-  --ring: oklch(0.63 0.185 40);
+  --border: oklch(0.885 0.006 150);
+  --input: oklch(0.88 0.006 150);
+  --ring: oklch(0.6 0.155 148);
 
-  /* Print identity */
-  --ink: oklch(0.22 0.02 60);
-  --cmyk-cyan: oklch(0.72 0.14 220);
-  --cmyk-magenta: oklch(0.62 0.25 350);
-  --cmyk-yellow: oklch(0.87 0.16 95);
-  --kraft: oklch(0.74 0.07 70);
+  /* Print identity — CMYK, slightly muted to sit behind the green */
+  --ink: oklch(0.2 0.014 150);
+  --cmyk-cyan: oklch(0.7 0.13 220);
+  --cmyk-magenta: oklch(0.6 0.22 350);
+  --cmyk-yellow: oklch(0.86 0.15 95);
+  --kraft: oklch(0.73 0.07 70);
 }
 
 .dark {
-  --background: oklch(0.19 0.014 55);
-  --foreground: oklch(0.96 0.008 83);
+  --background: oklch(0.17 0.012 150);
+  --foreground: oklch(0.95 0.006 150);
 
-  --card: oklch(0.235 0.016 55);
-  --card-foreground: oklch(0.96 0.008 83);
-  --popover: oklch(0.235 0.016 55);
-  --popover-foreground: oklch(0.96 0.008 83);
+  --card: oklch(0.215 0.014 150);
+  --card-foreground: oklch(0.95 0.006 150);
+  --popover: oklch(0.215 0.014 150);
+  --popover-foreground: oklch(0.95 0.006 150);
 
-  --primary: oklch(0.7 0.17 45);
-  --primary-foreground: oklch(0.2 0.02 50);
+  --primary: oklch(0.68 0.16 147);
+  --primary-foreground: oklch(0.16 0.02 150);
 
-  --secondary: oklch(0.28 0.018 55);
-  --secondary-foreground: oklch(0.96 0.008 83);
+  --secondary: oklch(0.26 0.014 150);
+  --secondary-foreground: oklch(0.95 0.006 150);
 
-  --muted: oklch(0.28 0.018 55);
-  --muted-foreground: oklch(0.72 0.015 70);
+  --muted: oklch(0.26 0.014 150);
+  --muted-foreground: oklch(0.7 0.014 150);
 
-  --accent: oklch(0.32 0.03 50);
-  --accent-foreground: oklch(0.96 0.008 83);
+  --accent: oklch(0.3 0.03 150);
+  --accent-foreground: oklch(0.95 0.006 150);
 
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 14%);
-  --ring: oklch(0.7 0.17 45);
+  --ring: oklch(0.68 0.16 147);
 
-  --ink: oklch(0.96 0.008 83);
-  --cmyk-cyan: oklch(0.75 0.14 220);
-  --cmyk-magenta: oklch(0.68 0.24 350);
-  --cmyk-yellow: oklch(0.87 0.16 95);
-  --kraft: oklch(0.76 0.07 70);
+  --ink: oklch(0.95 0.006 150);
+  --cmyk-cyan: oklch(0.73 0.13 220);
+  --cmyk-magenta: oklch(0.66 0.22 350);
+  --cmyk-yellow: oklch(0.86 0.15 95);
+  --kraft: oklch(0.75 0.07 70);
 }
 
 @layer base {
@@ -189,15 +189,15 @@
 
   .shadow-soft {
     box-shadow:
-      0 1px 2px oklch(0.2 0.02 55 / 0.04),
-      0 8px 24px oklch(0.2 0.02 55 / 0.06),
-      0 24px 48px oklch(0.2 0.02 55 / 0.05);
+      0 1px 2px oklch(0.2 0.02 150 / 0.05),
+      0 8px 24px oklch(0.2 0.02 150 / 0.07),
+      0 24px 48px oklch(0.2 0.02 150 / 0.06);
   }
 
   .shadow-lift {
     box-shadow:
-      0 2px 4px oklch(0.2 0.02 55 / 0.05),
-      0 14px 40px oklch(0.2 0.02 55 / 0.1);
+      0 2px 4px oklch(0.2 0.02 150 / 0.06),
+      0 14px 40px oklch(0.2 0.02 150 / 0.12);
   }
 
   .marquee-track {
