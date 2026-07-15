@@ -19,7 +19,7 @@ export default function Process() {
           <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs font-medium uppercase tracking-[0.14em] text-white/70 backdrop-blur">
             How we work
           </span>
-          <h2 className="font-display text-3xl font-bold leading-tight tracking-tight text-balance text-white sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-balance text-white sm:text-4xl lg:text-[2.75rem]">
             Four steps. One roof.
           </h2>
           <p className="text-lg leading-relaxed text-white/65 text-pretty">
@@ -34,20 +34,20 @@ export default function Process() {
             return (
               <motion.div
                 key={step.n}
-                initial={{ opacity: 0, y: 28 }}
+                initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{
                   duration: 0.55,
-                  delay: i * 0.1,
+                  delay: i * 0.08,
                   ease: [0.22, 1, 0.36, 1]
                 }}
                 className="group relative"
               >
-                <div className="relative h-full rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition-colors duration-300 hover:border-white/25 hover:bg-white/[0.07]">
+                <div className="relative h-full rounded-xl border border-white/10 bg-white/[0.03] p-6 transition-colors duration-300 hover:border-white/20 hover:bg-white/[0.06]">
                   <div className="flex items-center justify-between">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-lift">
-                      <Icon className="h-6 w-6" strokeWidth={1.75} />
+                    <span className="flex h-11 w-11 items-center justify-center rounded-lg border border-white/15 bg-white/10 text-white">
+                      <Icon className="h-5 w-5" strokeWidth={1.75} />
                     </span>
                     <span className="font-mono text-sm text-white/35">
                       {step.n}

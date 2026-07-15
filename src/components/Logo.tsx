@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
 
 /**
- * Grafitala mark — an isometric folding carton built from the three
- * process colours (cyan / magenta / yellow) that define printing.
+ * Grafitala mark — an isometric folding carton rendered in the brand
+ * green, a quiet tonal echo of the wordmark logo.
  */
 export function LogoMark({ className }: { className?: string }) {
   return (
@@ -12,26 +12,18 @@ export function LogoMark({ className }: { className?: string }) {
       aria-hidden="true"
       className={cn("h-9 w-9", className)}
     >
-      <rect
-        width="40"
-        height="40"
-        rx="10"
-        className="fill-[var(--ink)]"
-      />
+      <rect width="40" height="40" rx="10" className="fill-[var(--ink)]" />
       {/* box top */}
-      <path
-        d="M20 8 L31 13.4 L20 18.8 L9 13.4 Z"
-        className="fill-[var(--cmyk-yellow)]"
-      />
+      <path d="M20 8 L31 13.4 L20 18.8 L9 13.4 Z" fill="oklch(0.72 0.13 150)" />
       {/* left face */}
       <path
         d="M9 13.4 L20 18.8 L20 31.6 L9 26.2 Z"
-        className="fill-[var(--cmyk-cyan)]"
+        fill="oklch(0.58 0.12 151)"
       />
       {/* right face */}
       <path
         d="M31 13.4 L20 18.8 L20 31.6 L31 26.2 Z"
-        className="fill-[var(--cmyk-magenta)]"
+        fill="oklch(0.45 0.1 150)"
       />
     </svg>
   );

@@ -82,13 +82,8 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative overflow-hidden py-20 lg:py-28">
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="mesh-blob absolute right-0 top-10 h-80 w-80 rounded-full bg-primary/15" />
-        <div className="mesh-blob absolute -left-16 bottom-0 h-72 w-72 rounded-full bg-cyan/15" />
-      </div>
-
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-soft">
+        <div className="overflow-hidden rounded-2xl border border-border bg-card">
           <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr]">
             {/* Info panel */}
             <div className="relative bg-[var(--ink)] p-8 text-white sm:p-10">
@@ -97,7 +92,7 @@ export default function Contact() {
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs font-medium uppercase tracking-[0.14em] text-white/70">
                   Get in touch
                 </span>
-                <h2 className="mt-6 font-display text-3xl font-bold leading-tight tracking-tight text-balance sm:text-4xl">
+                <h2 className="mt-6 font-display text-3xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl">
                   Let&apos;s make your next box.
                 </h2>
                 <p className="mt-4 max-w-md leading-relaxed text-white/65">
@@ -109,8 +104,8 @@ export default function Contact() {
                 <ul className="mt-10 space-y-6">
                   {details.map(({ Icon, label, value }) => (
                     <li key={label} className="flex gap-4">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/10">
-                        <Icon className="h-5 w-5 text-primary" />
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/10">
+                        <Icon className="h-5 w-5 text-white" />
                       </span>
                       <div>
                         <p className="text-xs font-medium uppercase tracking-wider text-white/45">

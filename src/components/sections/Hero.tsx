@@ -12,7 +12,7 @@ const container = {
   visible: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } }
 };
 const item = {
-  hidden: { y: 24, opacity: 0 },
+  hidden: { y: 14, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
@@ -26,15 +26,10 @@ export default function Hero() {
       id="top"
       className="relative overflow-hidden bg-grid pt-28 pb-16 sm:pt-32 lg:pt-40 lg:pb-24"
     >
-      {/* Ambient CMYK mesh */}
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="mesh-blob absolute -left-24 top-10 h-80 w-80 rounded-full bg-primary/18" />
-        <div className="mesh-blob absolute right-0 top-0 h-96 w-96 rounded-full bg-cyan/14" />
-        <div className="mesh-blob absolute -bottom-20 left-1/3 h-80 w-80 rounded-full bg-magenta/10" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/40 to-background" />
-      </div>
+      {/* Soft top-down fade so the grid recedes into the page */}
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-background/50 to-background" />
 
-      <div className="container mx-auto grid grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:px-8">
+      <div className="container mx-auto grid grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:px-8">
         <motion.div variants={container} initial="hidden" animate="visible">
           <motion.div variants={item}>
             <Badge>
@@ -45,11 +40,11 @@ export default function Hero() {
 
           <motion.h1
             variants={item}
-            className="mt-6 font-display text-4xl font-bold leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-6xl xl:text-7xl"
+            className="mt-6 font-display text-4xl font-semibold leading-[1.06] tracking-tight text-balance sm:text-5xl lg:text-6xl"
           >
             Packaging that
             <br className="hidden sm:block" /> sells what&apos;s{" "}
-            <span className="text-cmyk">inside</span>.
+            <span className="text-primary">inside</span>.
           </motion.h1>
 
           <motion.p
@@ -92,8 +87,8 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <CartonArt />
@@ -108,7 +103,7 @@ export default function Hero() {
         transition={{ duration: 0.6 }}
         className="container mx-auto mt-14 px-4 sm:px-6 lg:mt-20 lg:px-8"
       >
-        <dl className="grid grid-cols-2 divide-border overflow-hidden rounded-2xl border border-border bg-card/60 backdrop-blur sm:grid-cols-4 sm:divide-x">
+        <dl className="grid grid-cols-2 divide-border overflow-hidden rounded-xl border border-border bg-card sm:grid-cols-4 sm:divide-x">
           {stats.map((s) => (
             <div key={s.label} className="px-6 py-6 text-center sm:text-left">
               <dt className="sr-only">{s.label}</dt>
