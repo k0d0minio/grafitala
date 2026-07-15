@@ -2,10 +2,9 @@
 
 import { motion } from "framer-motion";
 import {
-  CheckCircle2,
+  Check,
   Factory,
   Palette,
-  Sparkles,
   Printer,
   Scissors
 } from "lucide-react";
@@ -55,7 +54,9 @@ export default function WhyUs() {
             >
               {reasons.map((r) => (
                 <motion.li key={r.title} variants={item} className="flex gap-4">
-                  <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-primary" />
+                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-primary/25 bg-primary/8 text-primary">
+                    <Check className="h-3.5 w-3.5" strokeWidth={2.5} />
+                  </span>
                   <div>
                     <h3 className="font-display text-lg font-semibold">
                       {r.title}
@@ -82,10 +83,10 @@ export default function WhyUs() {
                 <motion.div
                   key={label}
                   variants={item}
-                  className="rounded-2xl border border-border bg-card p-5 shadow-soft"
+                  className="rounded-xl border border-border bg-card p-5"
                 >
-                  <Icon className="h-6 w-6 text-primary" strokeWidth={1.75} />
-                  <p className="mt-4 font-display text-3xl font-bold tracking-tight">
+                  <Icon className="h-5 w-5 text-muted-foreground" strokeWidth={1.75} />
+                  <p className="mt-4 font-display text-3xl font-semibold tracking-tight">
                     {value}
                   </p>
                   <p className="text-sm text-muted-foreground">{label}</p>
@@ -98,17 +99,14 @@ export default function WhyUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6 }}
-              className="rounded-2xl border border-border bg-gradient-to-br from-primary/8 via-card to-card p-6"
+              className="rounded-xl border border-border bg-card p-6"
             >
-              <div className="flex items-center gap-2">
-                <Sparkles className="h-5 w-5 text-primary" />
-                <h3 className="font-display text-lg font-semibold">
-                  Techniques we run
-                </h3>
-              </div>
+              <h3 className="font-display text-lg font-semibold">
+                Techniques we run
+              </h3>
               <dl className="mt-5 grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2">
                 {techniques.map((t) => (
-                  <div key={t.title}>
+                  <div key={t.title} className="border-l-2 border-primary/30 pl-4">
                     <dt className="font-medium">{t.title}</dt>
                     <dd className="mt-1 text-sm leading-relaxed text-muted-foreground">
                       {t.description}

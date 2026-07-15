@@ -25,7 +25,7 @@ export default function SectionHeading({
       className={`flex max-w-2xl flex-col gap-4 ${alignCls}`}
     >
       <Badge>{eyebrow}</Badge>
-      <h2 className="font-display text-3xl font-bold leading-tight tracking-tight text-balance sm:text-4xl lg:text-5xl">
+      <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl lg:text-[2.75rem]">
         {title}
       </h2>
       {description && (
