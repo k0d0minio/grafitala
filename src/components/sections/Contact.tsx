@@ -5,8 +5,11 @@ import { motion } from "framer-motion";
 import { Clock, Mail, MapPin, Phone, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { company } from "@/lib/content";
+import { useI18n } from "@/lib/i18n/context";
 
 export default function Contact() {
+  const { t } = useI18n();
+  const contact = t.contact;
   const [form, setForm] = useState({
     name: "",
     company: "",
@@ -16,11 +19,12 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const f = contact.form;
     const subject = encodeURIComponent(
-      `Quote request${form.company ? ` — ${form.company}` : ""}`
+      `${f.mailSubject}${form.company ? ` — ${form.company}` : ""}`
     );
     const body = encodeURIComponent(
-      `Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\n\n${form.message}`
+      `${f.mailName}: ${form.name}\n${f.mailCompany}: ${form.company}\n${f.mailEmail}: ${form.email}\n\n${form.message}`
     );
     window.location.href = `mailto:${company.email}?subject=${subject}&body=${body}`;
   };
@@ -33,7 +37,7 @@ export default function Contact() {
   const details = [
     {
       Icon: MapPin,
-      label: "Visit",
+      label: contact.details.visit,
       value: (
         <>
           {company.address.line1}
@@ -46,7 +50,7 @@ export default function Contact() {
     },
     {
       Icon: Phone,
-      label: "Call",
+      label: contact.details.call,
       value: (
         <a href={company.phoneHref} className="hover:text-primary">
           {company.phone}
@@ -55,7 +59,7 @@ export default function Contact() {
     },
     {
       Icon: Mail,
-      label: "Email",
+      label: contact.details.email,
       value: (
         <a
           href={`mailto:${company.email}`}
@@ -67,10 +71,10 @@ export default function Contact() {
     },
     {
       Icon: Clock,
-      label: "Hours",
+      label: contact.details.hours,
       value: (
         <span>
-          {company.hours.map((h) => (
+          {t.hours.map((h) => (
             <span key={h.days} className="block">
               {h.days}: {h.time}
             </span>
@@ -90,15 +94,13 @@ export default function Contact() {
               <div className="absolute inset-0 bg-dots opacity-[0.12]" />
               <div className="relative">
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs font-medium uppercase tracking-[0.14em] text-white/70">
-                  Get in touch
+                  {contact.eyebrow}
                 </span>
                 <h2 className="mt-6 font-display text-3xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl">
-                  Let&apos;s make your next box.
+                  {contact.title}
                 </h2>
                 <p className="mt-4 max-w-md leading-relaxed text-white/65">
-                  Tell us about your product and volumes. We&apos;ll come back
-                  with the right approach — offset or UV, structure and finish —
-                  and a quote.
+                  {contact.description}
                 </p>
 
                 <ul className="mt-10 space-y-6">
@@ -132,28 +134,28 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <Field
-                    label="Name"
+                    label={contact.form.name}
                     id="name"
                     value={form.name}
                     onChange={update("name")}
-                    placeholder="Your name"
+                    placeholder={contact.form.namePlaceholder}
                     required
                   />
                   <Field
-                    label="Company"
+                    label={contact.form.company}
                     id="company"
                     value={form.company}
                     onChange={update("company")}
-                    placeholder="Your company"
+                    placeholder={contact.form.companyPlaceholder}
                   />
                 </div>
                 <Field
-                  label="Email"
+                  label={contact.form.email}
                   id="email"
                   type="email"
                   value={form.email}
                   onChange={update("email")}
-                  placeholder="you@company.com"
+                  placeholder={contact.form.emailPlaceholder}
                   required
                 />
                 <div className="space-y-2">
@@ -161,7 +163,7 @@ export default function Contact() {
                     htmlFor="message"
                     className="text-sm font-medium text-foreground"
                   >
-                    What do you need?
+                    {contact.form.message}
                   </label>
                   <textarea
                     id="message"
@@ -169,7 +171,7 @@ export default function Contact() {
                     onChange={update("message")}
                     required
                     rows={5}
-                    placeholder="Product, box type, approximate volumes, timeline…"
+                    placeholder={contact.form.messagePlaceholder}
                     className="w-full resize-y rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/30"
                   />
                 </div>
@@ -178,12 +180,12 @@ export default function Contact() {
                   size="lg"
                   className="group h-12 w-full text-base sm:w-auto sm:px-8"
                 >
-                  Send request
+                  {contact.form.submit}
                   <Send className="transition-transform group-hover:translate-x-0.5" />
                 </Button>
                 <p className="text-xs text-muted-foreground">
-                  This opens your email app with the details filled in. Prefer to
-                  call? {company.phone}.
+                  {contact.form.footnoteLead} {contact.form.footnoteCall}{" "}
+                  {company.phone}.
                 </p>
               </form>
             </motion.div>

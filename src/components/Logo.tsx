@@ -31,10 +31,12 @@ export function LogoMark({ className }: { className?: string }) {
 
 export function Logo({
   className,
-  onClick
+  onClick,
+  label = "Grafitala — home"
 }: {
   className?: string;
   onClick?: () => void;
+  label?: string;
 }) {
   return (
     <a
@@ -44,7 +46,7 @@ export function Logo({
         "group inline-flex items-center gap-2.5 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-primary/50",
         className
       )}
-      aria-label="Grafitala — home"
+      aria-label={label}
     >
       <LogoMark className="transition-transform duration-300 group-hover:-rotate-6" />
       <span className="font-display text-xl font-bold tracking-tight text-foreground">

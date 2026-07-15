@@ -5,10 +5,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/Logo";
-import { nav } from "@/lib/content";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { useI18n } from "@/lib/i18n/context";
 import { cn } from "@/lib/utils";
 
 export default function Header() {
+  const { t } = useI18n();
+  const nav = t.nav;
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -32,7 +35,7 @@ export default function Header() {
       )}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Logo />
+        <Logo label={t.header.home} />
 
         <nav className="hidden items-center gap-1 md:flex">
           {nav.map((item) => (
@@ -47,9 +50,10 @@ export default function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
+          <LanguageSwitcher />
           <Button asChild size="sm" className="group">
             <a href="#contact">
-              Request a quote
+              {t.header.requestQuote}
               <ArrowRight className="transition-transform group-hover:translate-x-0.5" />
             </a>
           </Button>
@@ -59,7 +63,7 @@ export default function Header() {
           type="button"
           onClick={() => setOpen((v) => !v)}
           className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-foreground transition-colors hover:bg-secondary md:hidden"
-          aria-label={open ? "Close menu" : "Open menu"}
+          aria-label={open ? t.header.closeMenu : t.header.openMenu}
           aria-expanded={open}
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -88,10 +92,13 @@ export default function Header() {
               ))}
               <Button asChild className="mt-2 w-full">
                 <a href="#contact" onClick={() => setOpen(false)}>
-                  Request a quote
+                  {t.header.requestQuote}
                   <ArrowRight />
                 </a>
               </Button>
+              <div className="mt-3 flex justify-center">
+                <LanguageSwitcher />
+              </div>
             </div>
           </motion.nav>
         )}

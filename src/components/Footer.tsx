@@ -2,9 +2,13 @@
 
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { LogoMark } from "@/components/Logo";
-import { company, nav, products } from "@/lib/content";
+import { company, productKeys } from "@/lib/content";
+import { useI18n } from "@/lib/i18n/context";
 
 export default function Footer() {
+  const { t } = useI18n();
+  const nav = t.nav;
+  const footer = t.footer;
   return (
     <footer className="border-t border-border bg-secondary/40">
       <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
@@ -18,18 +22,16 @@ export default function Footer() {
               </span>
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-              A family print house making folding-carton packaging and labels
-              for the food industry — designed, printed, cut and glued in-house
-              in {company.location}.
+              {footer.blurb.replace("{location}", company.location)}
             </p>
-            <p className="text-xs text-muted-foreground">
-              We handle the packaging. You handle the packing.
-            </p>
+            <p className="text-xs text-muted-foreground">{footer.tagline}</p>
           </div>
 
           {/* Explore */}
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-foreground">Explore</h3>
+            <h3 className="text-sm font-semibold text-foreground">
+              {footer.explore}
+            </h3>
             <ul className="space-y-2.5 text-sm">
               {nav.map((item) => (
                 <li key={item.href}>
@@ -47,11 +49,11 @@ export default function Footer() {
           {/* What we print */}
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-foreground">
-              What we print
+              {footer.whatWePrint}
             </h3>
             <ul className="space-y-2.5 text-sm text-muted-foreground">
-              {products.map((p) => (
-                <li key={p.key}>{p.title}</li>
+              {productKeys.map((key) => (
+                <li key={key}>{t.products.items[key].title}</li>
               ))}
             </ul>
           </div>
@@ -59,7 +61,7 @@ export default function Footer() {
           {/* Contact */}
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-foreground">
-              Get in touch
+              {footer.getInTouch}
             </h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex gap-3">
@@ -91,9 +93,9 @@ export default function Footer() {
               <li className="flex gap-3">
                 <Clock className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 <span>
-                  {company.hours[0].days}
+                  {t.hours[0].days}
                   <br />
-                  {company.hours[0].time}
+                  {t.hours[0].time}
                 </span>
               </li>
             </ul>
@@ -102,9 +104,13 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-sm text-muted-foreground sm:flex-row">
           <p>
-            © {new Date().getFullYear()} {company.name}. All rights reserved.
+            © {new Date().getFullYear()} {company.name}. {footer.rights}
           </p>
-          <p>Printing packaging in {company.location} since {company.foundedYear}.</p>
+          <p>
+            {footer.since
+              .replace("{location}", company.location)
+              .replace("{year}", String(company.foundedYear))}
+          </p>
         </div>
       </div>
     </footer>
